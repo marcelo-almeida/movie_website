@@ -25,6 +25,9 @@ main_page_head = '''
             width: 640px;
             height: 480px;
         }
+        #info .modal-dialog {
+            margin-top: 50px;
+        }
         .hanging-close {
             position: absolute;
             top: -12px;
@@ -42,6 +45,7 @@ main_page_head = '''
         .movie-tile:hover {
             background-color: #EEE;
             cursor: pointer;
+            box-shadow: 12px 9px 20px 3px;
         }
         .scale-media {
             padding-bottom: 56.25%;
@@ -56,6 +60,20 @@ main_page_head = '''
             top: 0;
             background-color: white;
         }
+        .right-align {
+            float: right;
+            margin-right: 1%;
+            margin-bottom: 5%;
+            z-index: 10;
+        }
+        .align-text {
+            margin-left: 5%;
+            margin-bottom: 5%;
+        }
+        .modal-info {
+            background: #4c609ab8;
+            color: white;
+        }
     </style>
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
@@ -65,7 +83,7 @@ main_page_head = '''
             $("#trailer-video-container").empty();
         });
         // Start playing the video whenever the trailer modal is opened
-        $(document).on('click', '.movie-tile', function (event) {
+        $(document).on('click', '.movie-title', function (event) {
             var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
             var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
             $("#trailer-video-container").empty().append($("<iframe></iframe>", {
@@ -74,6 +92,15 @@ main_page_head = '''
               'src': sourceUrl,
               'frameborder': 0
             }));
+        });
+        // add info of the video whenever the trailer info modal is opened
+        $(document).on('click', '.movie-sequence-title', function (event) {
+            var fullTitle = $(this).attr('data-info-title')
+            var storyline = $(this).attr('data-info-storyline')
+            var duration =  $(this).attr('data-info-duration')
+            $("#trailer-info-container").empty().append('<h1 class="align-text">'+ fullTitle +'</h1>');
+            $("#trailer-info-container").append('<h4 class="align-text">Storyline: '+ storyline +'</h4>');
+            $("#trailer-info-container").append('<h5 class="align-text"><b>Duration: '+ duration +'</b></h5>');
         });
         // Animate in the movies when the page loads
         $(document).ready(function () {
@@ -101,6 +128,18 @@ main_page_content = '''
         </div>
       </div>
     </div>
+    
+    <!-- Trailer Info Modal -->
+    <div class="modal" id="info">
+      <div class="modal-dialog">
+        <div class="modal-content modal-info">
+            <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+                <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+            </a>
+            <div class="scale-media" id="trailer-info-container"></div>
+        </div>
+      </div>
+    </div>
 
     <!-- Main Page Content -->
     <div class="container">
@@ -122,9 +161,16 @@ main_page_content = '''
 
 # A single movie entry html template
 movie_tile_content = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <img src="{poster_image_url}" width="220" height="342">
-    <h2>{movie_title}</h2>
+<div class="col-md-6 col-lg-4 movie-tile text-center" >
+    <div class="movie-title" data-toggle="modal" data-target="#trailer" data-trailer-youtube-id="{trailer_youtube_id}">
+        <img src="{poster_image_url}" width="220" height="342">
+        <h2>{movie_title}</h2>
+        <h4>{movie_sequence_title}</h4>
+    </div>
+    <div class="movie-sequence-title" data-toggle="modal" data-target="#info" 
+    data-info-storyline="{movie_storyline}" data-info-title="{movie_full_title}" data-info-duration="{movie_duration}">
+        <span class="glyphicon glyphicon-info-sign right-align" title="Additional Information"></span>
+    </div >    
 </div>
 '''
 
@@ -144,8 +190,12 @@ def create_movie_tiles_content(movies):
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             movie_title=movie.movie_title,
+            movie_sequence_title=movie.movie_sequence_title,
             poster_image_url=movie.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id
+            trailer_youtube_id=trailer_youtube_id,
+            movie_storyline=movie.movie_storyline,
+            movie_full_title=movie.get_full_title(),
+            movie_duration=movie.duration
         )
     return content
 
