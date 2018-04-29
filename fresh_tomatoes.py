@@ -2,14 +2,13 @@ import webbrowser
 import os
 import re
 
-
 # Styles and scripting for the page
 main_page_head = '''
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Fresh Tomatoes!</title>
+    <title>Best Movie Trailers</title>
 
     <!-- Bootstrap 3 -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
@@ -74,6 +73,9 @@ main_page_head = '''
             background: #4c609ab8;
             color: white;
         }
+        .navbar-shadow {
+            box-shadow: 2px 5px 13px 4px;
+        }
     </style>
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
@@ -112,7 +114,6 @@ main_page_head = '''
 </head>
 '''
 
-
 # The main page layout and title bar
 main_page_content = '''
   <body>
@@ -129,7 +130,7 @@ main_page_content = '''
       </div>
     </div>
     
-    <!-- Trailer Info Modal -->
+    <!-- Movie Info Modal -->
     <div class="modal" id="info">
       <div class="modal-dialog">
         <div class="modal-content modal-info">
@@ -143,10 +144,10 @@ main_page_content = '''
 
     <!-- Main Page Content -->
     <div class="container">
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top navbar-shadow" role="navigation">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+            <a class="navbar-brand" href="#">Best Movie Trailers</a>
           </div>
         </div>
       </div>
@@ -157,7 +158,6 @@ main_page_content = '''
   </body>
 </html>
 '''
-
 
 # A single movie entry html template
 movie_tile_content = '''
@@ -189,8 +189,8 @@ def create_movie_tiles_content(movies):
 
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
-            movie_title=movie.movie_title,
-            movie_sequence_title=movie.movie_sequence_title,
+            movie_title=movie.title,
+            movie_sequence_title=movie.extended_title,
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=trailer_youtube_id,
             movie_storyline=movie.movie_storyline,

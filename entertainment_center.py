@@ -2,7 +2,7 @@ import media
 import fresh_tomatoes
 
 MOVIE_TITLE_KEY = "movie_title"
-MOVIE_SEQUENCE_TITLE = "movie_sequence_title"
+MOVIE_EXTENDED_TITLE_KEY = "movie_extended_title"
 MOVIE_STORYLINE_KEY = "movie_storyline"
 POSTER_IMAGE_URL_KEY = "poster_image_url"
 TRAILER_YOUTUBE_URL_KEY = "trailer_youtube_url"
@@ -13,7 +13,7 @@ def get_movies_information():
     movie_information_list = [
         {
             MOVIE_TITLE_KEY: "The Lord of the Rings",
-            MOVIE_SEQUENCE_TITLE: "The Fellowship of the Ring",
+            MOVIE_EXTENDED_TITLE_KEY: "The Fellowship of the Ring",
             MOVIE_STORYLINE_KEY:
                 "The beginning of the journey to destroy the one ring",
             POSTER_IMAGE_URL_KEY:
@@ -23,7 +23,7 @@ def get_movies_information():
         },
         {
             MOVIE_TITLE_KEY: "Doctor Strange",
-            MOVIE_SEQUENCE_TITLE: "",
+            MOVIE_EXTENDED_TITLE_KEY: "",
             MOVIE_STORYLINE_KEY:
                 "After a car accident a men lost of the use of his hands, but he find a way with mysterious magic.",
             POSTER_IMAGE_URL_KEY:
@@ -33,7 +33,7 @@ def get_movies_information():
         },
         {
             MOVIE_TITLE_KEY: "Harry Potter",
-            MOVIE_SEQUENCE_TITLE: "and Philosopher's Stone",
+            MOVIE_EXTENDED_TITLE_KEY: "and Philosopher's Stone",
             MOVIE_STORYLINE_KEY:
                 "The beginning of the adventures of Harry Potter in the world of magic",
             POSTER_IMAGE_URL_KEY:
@@ -43,7 +43,7 @@ def get_movies_information():
         },
         {
             MOVIE_TITLE_KEY: "Hobbit",
-            MOVIE_SEQUENCE_TITLE: "an Unexpected Journey",
+            MOVIE_EXTENDED_TITLE_KEY: "an Unexpected Journey",
             MOVIE_STORYLINE_KEY:
                 "A journey of a hobbit and a group of dwarves to reclaim the kingdom of Erebor.",
             POSTER_IMAGE_URL_KEY:
@@ -53,7 +53,7 @@ def get_movies_information():
         },
         {
             MOVIE_TITLE_KEY: "Rogue One",
-            MOVIE_SEQUENCE_TITLE: "a Star Wars Story",
+            MOVIE_EXTENDED_TITLE_KEY: "a Star Wars Story",
             MOVIE_STORYLINE_KEY:
                 "A story about the theft of space station plans for the Rebel Alliance.",
             POSTER_IMAGE_URL_KEY:
@@ -63,7 +63,7 @@ def get_movies_information():
         },
         {
             MOVIE_TITLE_KEY: "Matrix",
-            MOVIE_SEQUENCE_TITLE: "",
+            MOVIE_EXTENDED_TITLE_KEY: "",
             MOVIE_STORYLINE_KEY:
                 "A story about Neo and the prophecy of the chosen one",
             POSTER_IMAGE_URL_KEY:
@@ -76,13 +76,13 @@ def get_movies_information():
 
 
 def create_movie_trailer(movie_title,
-                         movie_sequence_title,
+                         movie_extended_title,
                          movie_storyline,
                          poster_image_url,
                          trailer_youtube_url,
                          duration):
     movie = media.Movie(movie_title,
-                        movie_sequence_title,
+                        movie_extended_title,
                         movie_storyline,
                         poster_image_url,
                         trailer_youtube_url,
@@ -95,7 +95,7 @@ def create_movie_list():
     movies = []
     for movie_information in movie_information_list:
         movie = create_movie_trailer(movie_information[MOVIE_TITLE_KEY],
-                                     movie_information[MOVIE_SEQUENCE_TITLE],
+                                     movie_information[MOVIE_EXTENDED_TITLE_KEY],
                                      movie_information[MOVIE_STORYLINE_KEY],
                                      movie_information[POSTER_IMAGE_URL_KEY],
                                      movie_information[TRAILER_YOUTUBE_URL_KEY],
