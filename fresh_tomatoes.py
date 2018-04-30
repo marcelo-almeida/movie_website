@@ -70,7 +70,7 @@ main_page_head = '''
             margin-bottom: 5%;
         }
         .modal-info {
-            background: #4c609ab8;
+            background: #5d7edc;
             color: white;
         }
         .navbar-shadow {
