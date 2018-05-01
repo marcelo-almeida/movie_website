@@ -23,6 +23,7 @@ fresh_tomatoes.py (generator of html pages) -  Udacity
 https://github.com/udacity/ud036_StarterCode/blob/master/fresh_tomatoes.py
 
 Modifications have been made in the base file to be compliance with the entertainment_center.py
+
 Poster images are get from the follows pages:
 
 http://www-images.theonering.org/torwp/wp-content/uploads/2008/11/fellowship-movie-poster.jpg
