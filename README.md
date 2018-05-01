@@ -3,7 +3,9 @@
 - It is possible see storyline, duration, poster and trailer in youtube.
 ## Requirements
 - This program was developed with Python 2.7.14
+
   https://www.python.org/downloads/
+
 - It is necessary an internet Browser (Chrome, Firefox, Edge)
 ## How to run
 - Install Python 2.7.14
