@@ -18,6 +18,7 @@ main_page_head = '''
     <style type="text/css" media="screen">
         body {
             padding-top: 80px;
+            background: #f2f3bf;
         }
         #trailer .modal-dialog {
             margin-top: 200px;
@@ -42,7 +43,7 @@ main_page_head = '''
             padding-top: 20px;
         }
         .movie-tile:hover {
-            background-color: #EEE;
+            background: #f7f98b;
             cursor: pointer;
             box-shadow: 12px 9px 20px 3px;
         }
