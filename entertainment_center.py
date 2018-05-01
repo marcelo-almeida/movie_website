@@ -10,6 +10,7 @@ DURATION_KEY = "duration"
 
 
 def get_movies_information():
+    # create a list of map with movie information
     movie_information_list = [
         {
             MOVIE_TITLE_KEY: "The Lord of the Rings",
@@ -57,7 +58,8 @@ def get_movies_information():
             MOVIE_STORYLINE_KEY:
                 "A story about the theft of space station plans for the Rebel Alliance.",
             POSTER_IMAGE_URL_KEY:
-                "https://vignette.wikia.nocookie.net/starwars/images/f/f5/Rogue_One_A_Star_Wars_Story_theatrical_poster.png",
+                "https://vignette.wikia.nocookie.net/starwars/images/f/f5/"
+                "Rogue_One_A_Star_Wars_Story_theatrical_poster.png",
             TRAILER_YOUTUBE_URL_KEY: "https://www.youtube.com/watch?v=frdj1zb9sMY",
             DURATION_KEY: "2h 13m"
         },
@@ -81,6 +83,7 @@ def create_movie_trailer(movie_title,
                          poster_image_url,
                          trailer_youtube_url,
                          duration):
+    # create a instance of movie
     movie = media.Movie(movie_title,
                         movie_extended_title,
                         movie_storyline,
@@ -93,6 +96,7 @@ def create_movie_trailer(movie_title,
 def create_movie_list():
     movie_information_list = get_movies_information()
     movies = []
+    # for each movie_information create a instance of Movie and append in to list
     for movie_information in movie_information_list:
         movie = create_movie_trailer(movie_information[MOVIE_TITLE_KEY],
                                      movie_information[MOVIE_EXTENDED_TITLE_KEY],
@@ -106,6 +110,7 @@ def create_movie_list():
 
 def append_movies_to_the_view():
     movies = create_movie_list()
+    # create the page with movies
     fresh_tomatoes.open_movies_page(movies)
 
 
