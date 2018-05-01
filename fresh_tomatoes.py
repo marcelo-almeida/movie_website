@@ -70,8 +70,8 @@ main_page_head = '''
             margin-bottom: 5%;
         }
         .modal-info {
-            background: #5d7edc;
-            color: white;
+            background: #a8b2ce;
+            color: black;
         }
         .navbar-shadow {
             box-shadow: 2px 5px 13px 4px;
