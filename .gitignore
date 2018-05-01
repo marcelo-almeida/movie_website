@@ -99,3 +99,8 @@ ENV/
 
 # mypy
 .mypy_cache/
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/movie_website.iml
+.idea/modules.xml
+.idea/misc.xml
