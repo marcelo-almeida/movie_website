@@ -3,7 +3,8 @@ class Video:
 
         Attributes:
             title (str): title of the video.
-            extended_title (str): additional or extended title of the video, example: episode I
+            extended_title (str): additional or extended title of the video
+                example: episode I
             duration (str): duration of the video
         Method:
             get_full_title (str): get title joined with extended_title
@@ -19,7 +20,8 @@ class Video:
 
 
 class Movie(Video):
-    """The class Movie includes a inheritance with Video class and have specific attributes about Movies
+    """ The class Movie includes a inheritance with Video class and have
+        specific attributes about Movies.
 
         Attributes:
             movie_storyline (str): a little description about the movie.

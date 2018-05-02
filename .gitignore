@@ -104,3 +104,4 @@ ENV/
 .idea/movie_website.iml
 .idea/modules.xml
 .idea/misc.xml
+.idea/codeStyles/codeStyleConfig.xml
